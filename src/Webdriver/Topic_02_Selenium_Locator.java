@@ -99,16 +99,41 @@ public class Topic_02_Selenium_Locator {
 	
 	@Test
 	public void TC_08_Xpath() {
+		driver.get("https://demo.nopcommerce.com/register");
 		
+		
+		
+		
+	///  1: 
+		///<input type="text" data-val="true" data-val-required="First name is required." id="FirstName" name="FirstName">
+		
+		driver.findElement(By.xpath("//input[@data-val-required= 'First name is required.'] ")).sendKeys("Day la Xpath");
+		
+	/// 2: 
+		//<input type="text" data-val="true" data-val-required="Last name is required." id="LastName" name="LastName">
+		
+		driver.findElement(By.xpath("//input[@id ='LastName']")).sendKeys("Day la Xpath 2");
+		
+	/// 3:
+		
+		///<input type="email" data-val="true" data-val-email="Wrong email" data-val-required="Email is required." id="Email" name="Email">
+// <label for="Email">Email:</label>
+		
+		//driver.findElement(By.xpath("//label[text()='Email:']/following-sibling::input ")).sendKeys("abc@gmail.com");
+		
+		 driver.findElement(By.xpath("/html/body/div[6]/div[3]/div/div/div/div[2]/form/div[1]/div[2]/div[5]/input")).sendKeys("abc@gmail.com");
 		
 	
 	}
 	
+
+	
 	
 	//@AfterClass
 	//public void afterClass() {
-	   // driver.quit();
+	//    driver.quit();
 	//}
+	
 }
 
 
