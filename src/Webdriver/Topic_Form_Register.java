@@ -203,6 +203,10 @@ public class Topic_Form_Register {
 	@Test
 	public void TC_07_Incorrect_Email() {
 		///driver.get("https://alada.vn/tai-khoan/dang-ky.html");
+		
+		
+		// tool tip
+	  
 
 	}
 	
