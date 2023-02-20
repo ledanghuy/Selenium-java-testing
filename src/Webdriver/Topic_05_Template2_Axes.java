@@ -34,6 +34,7 @@ public class Topic_05_Template2_Axes {
 
 		////a[text()='Sony Xperia']
 		
+		
 	     /// Dù thay đổi vị trí của sản phẩm thì vẫn có thể lấy ra được :
 		
 		//a[text()='Sony Xperia']/parent::h2/following-sibling::div[@class='actions']/child::button

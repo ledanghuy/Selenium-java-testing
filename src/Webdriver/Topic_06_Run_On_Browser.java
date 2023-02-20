@@ -1,14 +1,14 @@
 package Webdriver;
 
-import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
+//import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
+//import org.testng.Assert;
+//import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -45,6 +45,9 @@ public class Topic_06_Run_On_Browser {
 		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		
 		
+		
+		
+		
 	}
 	
 
@@ -55,10 +58,8 @@ public class Topic_06_Run_On_Browser {
 		} else {
 			System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver");
 		}
-		
-		//System.setProperty("webdriver.chrome.driver", projectPath +"\\browserDrivers\\chromedriver.exe");		
+			
 		driver = new ChromeDriver();
-		
 		driver.get("https://demo.nopcommerce.com/");
 		driver.quit();
 		
@@ -72,7 +73,6 @@ public class Topic_06_Run_On_Browser {
 			System.setProperty("webdriver.gecko.driver", projectPath +"/browserDrivers/geckodriver");		
 		}
 		
-		 
 	     driver = new FirefoxDriver();
 	     driver.get("https://demo.nopcommerce.com/");
 		 driver.quit();
@@ -89,7 +89,6 @@ public class Topic_06_Run_On_Browser {
 		}
 		
 		driver = new EdgeDriver();
-		
 		driver.get("https://demo.nopcommerce.com/");
 	    driver.quit();
 		
