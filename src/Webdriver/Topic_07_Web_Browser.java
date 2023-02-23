@@ -39,26 +39,33 @@ public class Topic_07_Web_Browser {
 	@Test
 	public void TC_01() {
 		
+		
+		/// ** là dùng nhiều
+		
+		/// * sao là dùng it 
+		
+		
+		
 		///đóng cái tab hoặc cửa sổ nó đang đứng 
 		driver.close();
 		
 		/// Không quan tâm bao tab/window---Brower
-		driver.quit();
+		driver.quit();///**
 		
 		
 		///Có thể lưu nó vào 1 biến để sử dụng cho các step sau >> dùng lại nhiều lần
 		
 	    /// Tìm 1 element
-		WebElement emailTextBox=driver.findElement(By.xpath(""));
+		WebElement emailTextBox=driver.findElement(By.xpath("//input[@id='email']"));//**
 		emailTextBox.clear();
 		emailTextBox.sendKeys("");
 		
 		// Tìm nhiều element
-	    List<WebElement> CheckBoxes= driver.findElements(By.xpath(""));
+	    List<WebElement> CheckBoxes= driver.findElements(By.xpath("")); //*
 		
 		//// Mở ra 1 cái URL bất kỳ
 	    
-	    driver.get("https://www.facebook.com/");
+	    driver.get("https://www.facebook.com/");/// **
 	    
 	    //Clcik vào link tiếng việt
 	   
@@ -89,13 +96,13 @@ public class Topic_07_Web_Browser {
 	    
 	    /// Lấy ra được ID của window hoặc tab mà driver đang đứng 
 	    
-	    String LoginWindowID= driver.getWindowHandle();
+	    String LoginWindowID= driver.getWindowHandle();  //*
 	    
 	    
 	    
 	    /// Lấy ra ID của tất cả window lẫn tab
 	    
-	 //   Set <String> allID= driver.getWindowHandles();
+	 //   Set <String> allID= driver.getWindowHandles();  //*
 	    
 	    
 	    ///Cookie // Cache
@@ -104,13 +111,13 @@ public class Topic_07_Web_Browser {
 	
 	     //Login THành công >> Lưu Lại
 	     
-	     opt.getCookies();
+	     opt.getCookies(); //*
 	     
 	     ///Test Case khác >> Set cookie vào lại>> không cần phải login nữa.
 	     
 	    Timeouts timeout= opt.timeouts();
 	    //khoảng thời gian chờ  element xuất hiện
-	    timeout.implicitlyWait(15, TimeUnit.SECONDS); ///5 
+	    timeout.implicitlyWait(15, TimeUnit.SECONDS); ///5 ///**
 	    timeout.implicitlyWait(500, TimeUnit.MILLISECONDS);
  
 	    
@@ -123,7 +130,7 @@ public class Topic_07_Web_Browser {
 	    
 	    Window win= opt.window();
 	    win.fullscreen();
-	    win.maximize();
+	    win.maximize();//**
 	    
 	    
 	   
@@ -142,9 +149,9 @@ public class Topic_07_Web_Browser {
 	    
 	    
 	      TargetLocator tar=driver.switchTo();
-	      tar.alert();
-	      tar.frame("");
-	      tar.window("");
+	      tar.alert(); //*
+	      tar.frame("");//*
+	      tar.window("");//*
 	    
 		
 		
