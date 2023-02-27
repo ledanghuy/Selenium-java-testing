@@ -38,7 +38,7 @@ public class Web_Browser_Exce {
 	    // css
 	   //driver.findElement(By.cssSelector("div[class='footer'] a[title='My Account']")).click();
 	    
-	    SleepInSecond(3);
+	    SleepInSecond(2);
 	    ///driver.getCurrentUrl();
 	    
 	    Assert.assertEquals(driver.getCurrentUrl(), "http://live.techpanda.org/index.php/customer/account/login/");
@@ -51,7 +51,7 @@ public class Web_Browser_Exce {
 	    // css
 	   // driver.findElement(By.cssSelector("a[title='Create an Account']")).click();
 	    
-	    SleepInSecond(3);
+	    SleepInSecond(2);
 	    Assert.assertEquals(driver.getCurrentUrl(), "http://live.techpanda.org/index.php/customer/account/create/");
 	  
 		
@@ -83,11 +83,11 @@ public class Web_Browser_Exce {
 		//Click vao My Account 
 		
 		driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();	
-		SleepInSecond(3);
+		SleepInSecond(2);
 		
 		// Click vao Create an Account 
 		driver.findElement(By.xpath("//a[@title='Create an Account']")).click();
-		SleepInSecond(3);
+		SleepInSecond(2);
 		 Assert.assertEquals(driver.getCurrentUrl(), "http://live.techpanda.org/index.php/customer/account/create/");
 		 
 		
@@ -111,14 +111,14 @@ public class Web_Browser_Exce {
 		
 		
 		driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();	
-		SleepInSecond(3);
+		SleepInSecond(2);
 		
 		//Verify page HMTL co chua chuoi~ mong muon
 		Assert.assertTrue(driver.getPageSource().contains(" Login or Create an Account"));
 
 		///Click vao Create an Account
 		driver.findElement(By.xpath("//a[@title='Create an Account']")).click();
-		 SleepInSecond(3);
+		 SleepInSecond(2);
 		 
 		 
 		 // Verify  page HTML chua 1 chiuoi mong muon
