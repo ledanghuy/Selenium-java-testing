@@ -298,6 +298,11 @@ public class Web_Element_Exce {
 		
 	    //Step 03 : kiem tra step 02 da duoc chon
 		
+		driver.findElement(ageUnder18Radio).click();
+		driver.findElement(javacheckbox).click();
+		
+		
+		
 	
 		
 	
