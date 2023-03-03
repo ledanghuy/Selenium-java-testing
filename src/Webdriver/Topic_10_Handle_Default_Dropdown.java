@@ -77,7 +77,7 @@ public class Topic_10_Handle_Default_Dropdown {
 	public void TC_01_Register() {
 		
 		
-		driver.get("https://demo.nopcommerce.com/");
+		driver.get("https://jqueryui.com/resources/demos/selectmenu/default.html");
 		
 		
 		
