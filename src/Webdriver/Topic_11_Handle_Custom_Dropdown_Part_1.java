@@ -56,6 +56,8 @@ public class Topic_11_Handle_Custom_Dropdown_Part_1 {
 	@Test
 	public void TC_01_JQurey() {
 		
+		
+		//
 	    Select_item_in_DropDown("span#speed-button", "ul#speed-menu div[role='option']", "Slower"); 
 	    SleepInSecond(3);
 	    //driver.findElement(By.cssSelector("span#speed-button>span.ui-selectmenu-text")).getText();
@@ -114,10 +116,12 @@ public class Topic_11_Handle_Custom_Dropdown_Part_1 {
 		// 2 - Chờ cho tất cả item được load ra thành công :
 
 		///locator phải lấy được tất cả các thành phần bên trong 
+		
 		exliciWait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.cssSelector(allitemCss)));
 		
 		 
 		/// Đưa hết tất cả các item trong dropdown vào 1 cái list 
+		
 		List <WebElement> speed_Drop_down_item= driver.findElements(By.cssSelector(allitemCss));
 		
 		/// forech dành cho array hoặc collecttion )
