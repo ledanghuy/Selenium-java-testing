@@ -1,9 +1,15 @@
 package Webdriver;
 
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
+
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.Color;
 import org.testng.Assert;
@@ -56,24 +62,90 @@ public class Topic_14_Handle_Button_Default_Custom_Checkbox_and_Radiobuton {
 	SleepInSecond(2);
 		
 	}
-	@Test
+	///@Test
 	public void TC_02_Default_Checkbox_Radio() {
 		driver.get("https://automationfc.github.io/multiple-fields/");
-	}
-	
-	
-	//@Test
-	public void TC_03_Name() {
-
-	}
-	
-	//@Test
-	public void TC_04_TagName() {
+		
+		//click Chọn 1 checkbox 
+		
+		
+		driver.findElement(By.xpath("//label[contains(text(),'Digestive Problems')]/preceding-sibling::input")).click();
+		
+		
+		///click chonj 1 radio
+		
+		driver.findElement(By.xpath("//label[contains(text(),\"I don't drink\")]/preceding-sibling::input")).click();
+		
+		
+		///verify cac checkbox va raido da chon
+		
+		
+		assertTrue(driver.findElement(By.xpath("//label[contains(text(),'Digestive Problems')]/preceding-sibling::input")).isSelected());
+		assertTrue(driver.findElement(By.xpath("//label[contains(text(),\"I don't drink\")]/preceding-sibling::input")).isSelected());
+		
+		// Check box co the bo cho nhung radio thi khong the tu bo chon duoc 
+		
+		driver.findElement(By.xpath("//label[contains(text(),'Digestive Problems')]/preceding-sibling::input")).click();
+		
+		//Verify bỏ chọn checkbox
+		
+		assertFalse(driver.findElement(By.xpath("//label[contains(text(),'Digestive Problems')]/preceding-sibling::input")).isSelected());
 		
 	}
 	
 	//@Test
-	public void TC_05_LinkText() {
+	public void TC_03_Default_Checkbox_Radio_Multiple() {
+		
+		driver.get("https://automationfc.github.io/multiple-fields/");
+	List<WebElement> list_checkbox =driver.findElements(By.cssSelector("input.form-checkbox"));
+	
+	///dùng vòng lặp để duyệt qua và click vào check box
+	
+	for (WebElement item_checkbox : list_checkbox) {
+		
+		item_checkbox.click();
+		//SleepInSecond(1);
+		System.out.println("Đã lựa chọn");
+	
+	}
+	
+	/// Verify tatass cả các checkbox được chọn thành công
+	for (WebElement check_box : list_checkbox) {
+		
+		Assert.assertTrue(check_box.isSelected());
+		
+	}
+		
+}
+	
+	//@Test
+	public void TC_04_TC_Default_Checkbox_Radio_Multiple_Select_1_Request() {
+		// Chạy hết cả list checkbox nhưng chỉ select 1 cái theo yêu cầu 
+		driver.get("https://automationfc.github.io/multiple-fields/");
+		List<WebElement> list_checkbox =driver.findElements(By.cssSelector("input.form-checkbox"));
+		
+		for (WebElement item_checkbox : list_checkbox) {
+			
+			if (item_checkbox.getAttribute("value").equals("Sleep Apnea"))
+				
+				item_checkbox.click();
+			//SleepInSecond(1);
+			System.out.println(item_checkbox.isSelected());
+			//System.out.println( "Đã chọn");
+		}
+		
+		
+	//	for (WebElement check_box : list_checkbox) {
+		
+			//Assert.assertTrue(check_box.isSelected());
+			
+		//}
+		
+		
+	}
+	
+	//@Test
+	public void TC_05_() {
 
 	}
 	
