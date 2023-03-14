@@ -52,15 +52,8 @@ public class Topic_19_User_Interaction_Part_2 {
 		epliciwait=new WebDriverWait(driver, 10);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		
-		
-		
-		
-		
-		
-	}
-	
 
+	}
 
 	
  //  @Test
@@ -86,7 +79,7 @@ public class Topic_19_User_Interaction_Part_2 {
 	
 
 	}
-	@Test
+	//@Test
 	public void TC_02_Click_and_Hold_random() {
 		
 		driver.get("https://automationfc.github.io/jquery-selectable/");
@@ -154,27 +147,41 @@ public class Topic_19_User_Interaction_Part_2 {
     //  Assert.assertEquals(driver.findElement(By.cssSelector("ol.breadcrumb li.category6028")).getText(), " QUẢN TRỊ - LÃNH ĐẠO");
       
       Assert.assertTrue(driver.findElement(By.xpath("//ol[@class='breadcrumb']//strong[text()='Quản Trị - Lãnh Đạo']")).isDisplayed());
-      
-      
-      
-      
-		
+
     }
 	
 	//@Test
-	public void TC_04_Authentication_Alert() {
+	public void TC_04_Drag_and_Drop_HTML4() {
 
 	
+		driver.get("https://automationfc.github.io/kendo-drag-drop/");
 		
+		WebElement smallcrile = driver.findElement(By.cssSelector("div#draggable"));
 		
+		WebElement bigcrile= driver.findElement(By.cssSelector("div#droptarget"));
 		
+		action.dragAndDrop(smallcrile, bigcrile).perform();
+		SleepInSecond(3);
+		
+		///verify text
+		Assert.assertEquals(bigcrile.getText(),"You did great!");
 		  
+		/// Verify color
 		
+		String bigcrile_backgroundcolor= bigcrile.getCssValue("background-color");
+		
+		System.out.println(bigcrile_backgroundcolor);
+		
+		Assert.assertEquals(Color.fromString(bigcrile_backgroundcolor).asHex().toUpperCase(), "03a9F4");
+		
+  
 	}
 	
 	
-	//@Test
+	@Test
 	public void TC_05_() {
+		
+		
 		
 		
 	

@@ -27,9 +27,9 @@ public class Topic_15_Exercise_Handle_Button_Default_Custom_Checkbox_and_Radiobu
 	@BeforeClass
 	public void beforeClass() {
 		if (osName.contains("Windows")) {
-			System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver_1.exe");
 		} else {
-			System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver");
+			System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver_1");
 		}
 			
 		driver = new ChromeDriver();
