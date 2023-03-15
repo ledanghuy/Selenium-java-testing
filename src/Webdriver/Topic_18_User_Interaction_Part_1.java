@@ -47,6 +47,7 @@ public class Topic_18_User_Interaction_Part_1 {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		action= new Actions(driver);
+		
 		jsExcutor= (JavascriptExecutor) driver;
 		epliciwait=new WebDriverWait(driver, 10);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
