@@ -73,14 +73,7 @@ public class Topic_20_User_Interaction_Part_3 {
 		SleepInSecond(5);
 		
 		Assert.assertEquals(driver.findElement(By.xpath("//p[@id='demo']")).getText(), "Hello Automation Guys!");
-		
-		
-		
-		
-	
-		
-		
-	
+
 
 	}
 	//@Test
