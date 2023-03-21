@@ -70,19 +70,99 @@ public class Topic_24_Handle_Iframe_and_Frame_1 {
 	}
 
 	
-   @Test
-	public void TC_01_Random_in_Dom() {
+  // @Test
+	public void TC_01_kynaenglish() {
 		
 	   driver.get("https://skills.kynaenglish.vn/");
 	  
-	   jsExcutor.executeScript("arguments[0].scrollIntoView(true)", driver.findElement(By.xpath("")));
+	  /// jsExcutor.executeScript("arguments[0].scrollIntoView(true)", driver.findElement(By.xpath("")));
+	   
+	   Assert.assertTrue(driver.findElement(By.xpath("//iframe[contains(@src,'kyna.vn')]")).isDisplayed());
+	   
+	   
+	   ///swith vaò đúng thẻ iframe chứ elemnt đó
+	   
+	   //cách 1:
+	  // driver.switchTo().frame(1);
+	   
+	   //cách 2:
+	  // driver.switchTo().frame("");
+	   
+	   
+	   //cách 3:
+	   
+	   driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'kyna.vn')]")));
+	   
+	   String facebookLike= driver.findElement(By.xpath("//a[text()='Kyna.vn']/parent::div/following-sibling::div")).getText();
+	   
+	   System.out.println(facebookLike);
+	   
+	   Assert.assertEquals(facebookLike, "165K likes");
+	   
+	  
+	   
+	   //swith lai ve mainpage
+	   driver.switchTo().defaultContent();
+	   
+	   /// switch sang ifram chat
+	   
+	   
+	   driver.switchTo().frame ("cs_chat_iframe");
+	   //driver.switchTo().frame(driver.findElement(By.xpath("//iframe [@id='cs_chat_iframe']")));
+	   
+	   
+	   
+	   
+	  driver.findElement(By.cssSelector("div.button_bar")).click();
+	  
+	  driver.findElement(By.cssSelector(".input_name")).sendKeys("ABC");
+	  driver.findElement(By.cssSelector(".input_phone")).sendKeys("0166796223");
+	 new Select(driver.findElement(By.id("serviceSelect"))) .selectByVisibleText("HỖ TRỢ KỸ THUẬT");
+	 
+	 driver.findElement(By.name("message")).sendKeys("Hà Nội Mùa thu");
+	 
+    SleepInSecond(3);
+    
+    
+    driver.switchTo().defaultContent();
+    
+	driver.findElement(By.id("live-search-bar")).sendKeys("Excel");
+	driver.findElement(By.cssSelector("button.search-button")).click();
+	SleepInSecond(3);
+	
+	
+
+	List<WebElement> list_element = driver.findElements(By.cssSelector("div.content>h4"));
+	
+	for (WebElement list_item : list_element) {
 		
+		
+		Assert.assertTrue(list_item.getText().contains("Excel"));
+	}
+	
+	  
 		
 
 	}
-	//@Test
-	public void TC_02_Random_Popup_In_DOm() {
+	@Test
+	public void TC_02_hdfcbank() {
+		
+		driver.get("https://netbanking.hdfcbank.com/netbanking/");
+		
+		driver.switchTo().frame("login_page");
+		SleepInSecond(3);
 
+		driver.findElement(By.name("fldLoginUserId")).sendKeys("john2022");
+		
+		driver.findElement(By.cssSelector("a.login-btn")).click();
+		SleepInSecond(5);
+		
+		
+		//Assert.assertTrue(driver.findElement(By.xpath("//div [text()='Login to Netbanking']")).isDisplayed());
+		
+		Assert.assertTrue(driver.findElement(By.cssSelector("input#fldPasswordDispId")).isDisplayed());
+		driver.findElement(By.cssSelector("input#fldPasswordDispId")) .sendKeys("joyhn20022000");	  
+		
 		
 
 		
