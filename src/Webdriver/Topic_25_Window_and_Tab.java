@@ -134,8 +134,6 @@ public class Topic_25_Window_and_Tab {
 		/// Case 2 : Nhieu hon 2 window/ 2 tab
 		
 	  
-		
-
 	}
    //Dùng điwọc cho 2 ID ( window/tab)
    public void SwichToWindowByID(String otherID) 
@@ -246,12 +244,75 @@ public class Topic_25_Window_and_Tab {
 
     }
 	
-	//@Test
-	public void TC_04_Drag_and_Drop_HTML4() {
+	@Test
+	public void TC_04_live_techpanda() {
 	
   
+		driver.get("http://live.techpanda.org/");
+		
+		
+		String parent_id= driver.getWindowHandle();
+		
+		driver.findElement(By.xpath("//li[@class='level0 nav-1 first']/a")).click();
+		
+		driver.findElement(By.xpath("//a[@title='Sony Xperia']/parent::h2/following-sibling::div[@class='actions']//a[@class='link-compare']")).click();
+		////li[@class='success-msg']//span
+		Assert.assertEquals(driver.findElement(By.cssSelector("li.success-msg span")).getText(), "The product Sony Xperia has been added to comparison list.");
+		
+		
+		driver.findElement(By.xpath("//a[@title='Samsung Galaxy']/parent::h2/following-sibling::div[@class='actions']//a[@class='link-compare']")).click();
+		
+		Assert.assertEquals(driver.findElement(By.cssSelector("li.success-msg span")).getText(), "The product Samsung Galaxy has been added to comparison list.");
+		//buton[@title='Compare']
+		driver.findElement(By.xpath("//div[@class='actions']//span[text()='Compare']")).click();
+		
+		 //String parentPagewindowID = driver.getWindowHandle();
+		 //System.out.println("Parent Page" + parentPagewindowID);
+		 
+		 SwitchToWindowByPageTitle("Products Comparison List - Magento Commerce");
+		 SleepInSecond(3);
+		 
+		 
+		 Assert.assertTrue(driver.findElement(By.xpath("//h1[text()='Compare Products']")).isDisplayed());
+		// Assert.assertEquals(driver.getCurrentUrl(), "live.techpanda.org/index.php/catalog/product_compare/index/");
+	    // SleepInSecond(2);
+	     //driver.findElement(By.xpath("//input[@name='q']")).sendKeys("24h.com.vn");
+	     //SleepInSecond(3);
+		 
+		 //driver.findElement(By.xpath("//button[@title='Close Window']")).click();
+		 Close_All_Window_Tab_without_Parent(parent_id);
+		 
+		 SwitchToWindowByPageTitle("Mobile");
+		 SleepInSecond(3);
+		
+		 driver.findElement(By.xpath("//div[@class='actions']/a")).click();
+		 alert = driver.switchTo().alert();
+		 alert.accept();
+		 SleepInSecond(3);
+		 
+		 Assert.assertEquals(driver.findElement(By.xpath("//li[@class='success-msg']//span")).getText(), "The comparison list was cleared.");
 	}
 	
+	
+	public void Close_All_Window_Tab_without_Parent(String parentID) {
+		
+		 Set<String> allWindowIDs = driver.getWindowHandles();
+
+	       
+	       for (String id : allWindowIDs) {
+	     	  if (!id.equals(parentID))
+	     	  {
+	     		  driver.switchTo().window(id);
+	     		  
+	     		  driver.close();
+	     		  SleepInSecond(3);
+	     	  }
+				
+			}
+	       driver.switchTo().window(parentID);
+		   
+	      
+	}
 	
 	//@Test
 	public void TC_05_() {
