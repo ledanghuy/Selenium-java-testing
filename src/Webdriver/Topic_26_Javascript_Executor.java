@@ -1,12 +1,15 @@
 package Webdriver;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -16,7 +19,9 @@ public class Topic_26_Javascript_Executor {
 	String osName = System.getProperty("os.name");
 	
 	JavascriptExecutor jsExecutor;
-
+	
+	String EmailAddreess= "testdemo" +getRandomNumerb()+ "@gmail.com";
+	Alert alert;
 	@BeforeClass
 	public void beforeClass() {
 		if (osName.contains("Windows")) {
@@ -29,28 +34,148 @@ public class Topic_26_Javascript_Executor {
 		jsExecutor = (JavascriptExecutor) driver;
 	}
 
-	@Test
+	//@Test
 	public void TC_01_Tech_Panda() {
 		
 		navigateToUrlByJS("http://live.techpanda.org/");
+		SleepInSecond(5);
+		Assert.assertEquals(executeForBrowser("return document.domain;"), "live.techpanda.org");
+		
+		Assert.assertEquals(executeForBrowser("return document.URL;"), "http://live.techpanda.org/");
+		hightlightElement("//a[text()='Mobile']");
+		clickToElementByJS("//a[text()='Mobile']");
+		SleepInSecond(5);
+		
+		hightlightElement("//a[text()='Samsung Galaxy']/parent::h2/following-sibling::div[@class='actions']/button");
+		clickToElementByJS("//a[text()='Samsung Galaxy']/parent::h2/following-sibling::div[@class='actions']/button");
+		SleepInSecond(3);
+		
+		//li [@class='success-msg']//span
+		
+		//Assert.assertTrue(getInnerText().contains("Samsung Galaxy was added to your shopping cart."));
 		
 		
+		//a[text()='Customer Service']
+		hightlightElement("//a[text()='Customer Service']");
+		clickToElementByJS("//a[text()='Customer Service']");
+		SleepInSecond(3);
 		
-	  
+		
+	  hightlightElement("//input [@id='newsletter']");
+	   scrollToElementOnDown("//input [@id='newsletter']");
+	   SleepInSecond(4);
+	
+	   
+	   sendkeyToElementByJS("//input [@id='newsletter']", EmailAddreess);
+	   
+	   hightlightElement(" //button[@title='Subscribe']");
+	   clickToElementByJS("//button[@title='Subscribe']");
+	   SleepInSecond(5);
+	   
+		Assert.assertTrue(getInnerText().contains("Thank you for your subscription."));
+	   
+		navigateToUrlByJS("https://demo.guru99.com/v4/");
+		SleepInSecond(5);
+		
+       Assert.assertEquals(executeForBrowser("return document.domain;"), "demo.guru99.com");
+		
+		Assert.assertEquals(executeForBrowser("return document.URL;"), "https://demo.guru99.com/v4/");
+		
 	}
 	
+    public  int  getRandomNumerb() 
 	
+	{
+	        	return new Random().nextInt(99999);
+	}
 	
 	public String getDomainName()
 	{
-		return jsExecutor.executeScript(s);
+		return (String) jsExecutor.executeScript("return document.domain");
 	}
 	@Test
-	public void TC_02() {
+	public void TC_02_Register_HMTL_5_Validation_Message() {
+		
+		
+			
+		navigateToUrlByJS("https://warranty.rode.com/");
+		SleepInSecond(5);
+		String registerbutton="//button[contains(text(),'Register')]";
+		String firstname="//input [@id='firstname']";
+		String Surname= "//input [@id='surname']";
+		String Email ="//div[contains(text(),'Register')]/following-sibling::div//input[@id='email']";
+		String Password="//div[contains(text(),'Register')]/following-sibling::div//input[@id='password']";
+		String Confirm_Password="//div[contains(text(),'Register')]/following-sibling::div//input[@id='password-confirm']";
+		By  text_error_8_character=By.xpath("//div[contains(text(),'Register')]/following-sibling::div//span[@class='invalid-feedback']");
+		
+		// Lệnh lấy tin nhắn validation cho html 5: 
+		/// var element=$x("//input[@id='firstname']")[0];  
+		///element.validationMessage; 
+		
+		clickToElementByJS(registerbutton);
+		SleepInSecond(3);
+		Assert.assertEquals(getElementValidationMessage(firstname), "Please fill out this field.");
+		sendkeyToElementByJS(firstname, "ABC");
+		
+		clickToElementByJS(registerbutton);
+		SleepInSecond(3);
+		Assert.assertEquals(getElementValidationMessage(Surname), "Please fill out this field.");
+		sendkeyToElementByJS(Surname, "XaoRau");
+		
+		
+		clickToElementByJS(registerbutton);
+		SleepInSecond(3);
+		Assert.assertEquals(getElementValidationMessage(Email), "Please fill out this field.");
+		sendkeyToElementByJS(Email, "abcdsdsad");
+		Assert.assertEquals(getElementValidationMessage(Email), "Please enter an email address.");
+		sendkeyToElementByJS(Email, EmailAddreess);	
+		
+		
+		clickToElementByJS(registerbutton);
+		SleepInSecond(3);
+		Assert.assertEquals(getElementValidationMessage(Password), "Please fill out this field.");
+		sendkeyToElementByJS(Password, "1234546");
+		
+		clickToElementByJS(registerbutton);
+		SleepInSecond(3);
+		Assert.assertEquals(getElementValidationMessage(Confirm_Password), "Please fill out this field.");
+		sendkeyToElementByJS(Confirm_Password, "455661");
+		
+		clickToElementByJS(registerbutton);
+		SleepInSecond(3);
+		Assert.assertEquals(driver.findElement(text_error_8_character).getText(),"Password must be 8 characters or more");
+		
+		sendkeyToElementByJS(Password, "123454678");
+		Assert.assertEquals(getElementValidationMessage(Confirm_Password), "Please fill out this field.");
+		sendkeyToElementByJS(Confirm_Password, "455661");
+		
+		clickToElementByJS(registerbutton);
+		SleepInSecond(3);
+		Assert.assertEquals(driver.findElement(text_error_8_character).getText(),"The password confirmation does not match.");
+		
+		sendkeyToElementByJS(Password, "123454678");
+		Assert.assertEquals(getElementValidationMessage(Confirm_Password), "Please fill out this field.");
+		sendkeyToElementByJS(Confirm_Password, "123454678");
+		
+		clickToElementByJS(registerbutton);
+ 
+
+		navigateToUrlByJS("https://warranty.rode.com/registration");
+		
+	   Assert.assertEquals(driver.findElement(By.xpath("//div[@class='container']/h2[text()='Register your warranty']")).getText(),"Register your warranty");
+			
+		
+		
+		
 	}
-	
-	@Test
+
+//	@Test
 	public void TC_03() {
+		
+	
+		
+
+		
 	
 	}
 	
