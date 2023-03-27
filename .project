@@ -16,11 +16,6 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>Upload_File/Fish_3.jpg</name>
-			<type>1</type>
-			<location>C:/Users/t/Downloads/Fish_3.jpg</location>
-		</link>
-		<link>
 			<name>browserDrivers/chromedriver_1.exe</name>
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Set_up/New%20folder/chromedriver_1.exe</locationURI>

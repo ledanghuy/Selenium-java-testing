@@ -48,7 +48,7 @@ public class Topic_22_Handle_Popup_Dialog_Part_2 {
 			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
 		}
 		
-		FirefoxOptions optionns= new FirefoxOptions();
+	     FirefoxOptions optionns= new FirefoxOptions();
 		optionns.setProfile(new FirefoxProfile());
 		optionns.addPreference("dom.webnotifications.enabled", false);
 		
@@ -178,18 +178,7 @@ public class Topic_22_Handle_Popup_Dialog_Part_2 {
 		
 		Assert.assertEquals(driver.findElements(createAccountPOpup).size(), 0);
 		
-		
-		
-		
-		
-		
-		
-		
 
-		
-		
-
-		
 	}
 	
 	//@Test
