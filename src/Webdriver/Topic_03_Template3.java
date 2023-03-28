@@ -29,21 +29,9 @@ public class Topic_03_Template3 {
 	@Test
 	public void TC_01() {
 		
-		driver.get("http://live.techpanda.org/index.php/customer/account/login/");
-		
-		// Click vào my account bên dưới foooter 
-		
-		driver.findElement(By.xpath("//div[@class ='footer']//a[@title='My Account']")).click();
-		
-		//input[starts-with(@data-spm-anchor-i,'a2o4n.login_signup')]
-		
-		
-		///div[@class='footer-contain']//a[contains (text(),'My Account']
-		///div[@class='footer-contain']//a[contains (@title,'My Account']
-		///div[@class='footer']//a[contains(@href,'account']
-		
-		//orange[contains@class, ]
 	
+		
+		
 	  
 	}
 	@Test
