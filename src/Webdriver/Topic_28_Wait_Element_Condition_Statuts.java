@@ -28,7 +28,7 @@ public class Topic_28_Wait_Element_Condition_Statuts {
 		}
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		expliciWait =new WebDriverWait(driver, 10);
+		expliciWait =new WebDriverWait (driver, 10);
 		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
