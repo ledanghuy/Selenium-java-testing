@@ -83,10 +83,7 @@ public class Topic_28_Wait_Element_Condition_Statuts {
 		
 		/// Chờ cho email address textbo presence trong HTML trong vòng 10s
 		expliciWait.until(ExpectedConditions.presenceOfElementLocated(By.id("email")));
-		
-		
-		
-	
+
 	}
 	
 	//@Test
