@@ -157,7 +157,7 @@ public class Topic_32_Mix_Implicit_Explicit_Wait {
 	}
 	
 	
-	@Test
+	//@Test
 	public void TC_05_Element_Not_Found_Explicit_Element() {
  
 		
@@ -178,6 +178,24 @@ public class Topic_32_Mix_Implicit_Explicit_Wait {
 
 		
 	}
+	
+	@Test
+	public void TC_06_Real() {
+ 
+		
+		expicitWait = new WebDriverWait (driver,15);
+		driver.get("https://www.facebook.com/");
+		
+		///Wait
+	    expicitWait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("email"))));
+	    
+	    
+	    //Action
+	    driver.findElement(By.cssSelector("input#email")).sendKeys("");
+		
+	}
+	
+	
 	
 	
 	public String getTimeStamp()
