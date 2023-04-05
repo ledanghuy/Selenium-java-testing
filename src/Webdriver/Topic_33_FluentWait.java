@@ -30,11 +30,11 @@ public class Topic_33_FluentWait {
 	
 	long AllTime=15; // second
 	
-	long pollingTime=100; // mili second
+	long pollingTime=1000; // mili second
 	
 	
 	FluentWait<WebDriver> fluentDriver;
-	
+	FluentWait<WebElement> fluetElement;
 
 	@BeforeClass
 	public void beforeClass() {
@@ -47,7 +47,7 @@ public class Topic_33_FluentWait {
 
 	}
 
-	@Test
+	//@Test
 	public void TC_01() {
 		
 		driver.get("https://automationfc.github.io/dynamic-loading/");
@@ -89,6 +89,25 @@ public class Topic_33_FluentWait {
 	@Test
 	public void TC_02_Fluent() {
 		driver.get("https://automationfc.github.io/fluent-wait/");
+		
+		WebElement Countdown_Time= FindElement("//div[@id='javascript_countdown_time']");
+		
+		fluetElement = new FluentWait<WebElement>(Countdown_Time);
+		
+		fluetElement.withTimeout(Duration.ofSeconds(AllTime))
+		.pollingEvery(Duration.ofMillis(pollingTime))
+        .ignoring(NoSuchElementException.class);
+		
+		fluetElement.until(new Function<WebElement, Boolean>() {
+			
+			public Boolean apply(WebElement element)
+			{
+				String text= element.getText();
+				System.out.println("Show Text : " + text);
+				return text.endsWith("00");
+			}
+		});
+		
 		
 	}
 	
