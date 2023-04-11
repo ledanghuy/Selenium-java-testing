@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Web Application">
+ <!--  <test name="TIKI WEB">
+    <classes>
+      <groups>
+      <run>
+         <include name= "Cart"></include>
+         
+      </run>
+      </groups>
+      
+      <packages>
+          <package name="tiki.admin"></package>
+      </packages>
+
+    </classes> --> 
+    
+ 
+    
+    <test name="Run on FIREFOX">
+      <parameter name= "browser" value ="firefox"/>
+       <classes>
+             <class name="facebook.WebApp.Login_01_Web"/>
+      </classes>
+  </test> 
+  
+ 
+  
+  
+</suite>

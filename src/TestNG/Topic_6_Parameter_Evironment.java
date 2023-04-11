@@ -13,10 +13,11 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class Topic_5_Parameter {
+public class Topic_6_Parameter_Evironment {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	By emailTextbox = By.xpath("//*[@id='email']");
@@ -25,7 +26,7 @@ public class Topic_5_Parameter {
 
 	@Parameters("browser")
 	@BeforeClass
-	public void beforeClass(String browserName) {
+	public void beforeClass(@Optional ("firefox") String browserName) {
 		
 		/// if else 
 	//	if (browserName.equals("firefox"))
@@ -83,10 +84,15 @@ public class Topic_5_Parameter {
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	}
 
+	@Parameters ("environment")
 	@Test
-	public void TC_01_LoginToSystem(String username, String password)  {
-		driver.get("http://live.techpanda.org/index.php/customer/account/login/");
+	public void TC_01_LoginToSystem(@Optional ("live") String envName)  {
+		
+		String envURL= getEnviromentUrl(envName);
+		driver.get(envURL + "index.php/customer/account/login/");
 
+		System.out.println("Env URL = " + envURL);
+		
 		driver.findElement(emailTextbox).sendKeys("selenium_11_01@gmail.com");
 		driver.findElement(passwordTextbox).sendKeys("111111");
 		driver.findElement(loginButton).click();
@@ -97,6 +103,37 @@ public class Topic_5_Parameter {
 		
 		
 	}
+	
+	public String getEnviromentUrl (String envName )
+	{
+		if (envName.equals("dev"))
+		{
+			return "http://dev.live.techpanda.org/";
+		}else if ( envName.equals("test"))
+		{
+			return "http://test.live.techpanda.org/";
+		}else if (envName.equals("live"))
+		{
+			return "http://live.techpanda.org/";
+		}else 
+		{
+			return null;
+		}
+			
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
 
 
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Mobile Application">
+ <!--  <test name="TIKI WEB">
+    <classes>
+      <groups>
+      <run>
+         <include name= "Cart"></include>
+         
+      </run>
+      </groups>
+      
+      <packages>
+          <package name="tiki.admin"></package>
+      </packages>
+
+    </classes> --> 
+    
+ 
+    
+    <test name="Run on FIREFOX">
+      <parameter name= "browser" value ="firefox"/>
+       <classes>
+             <class name="mobileApp.Login_01_App"/>
+      </classes>
+  </test> 
+  
+ 
+  
+  
+</suite>
